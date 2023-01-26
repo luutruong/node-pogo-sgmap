@@ -9,7 +9,6 @@ const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.j
 
   return {
     ...v,
-    image: `https://img.pokemondb.net/artwork/${slug}.jpg`,
     infoUrl: `https://pokemondb.net/pokedex/${slug}`,
   }
 })
@@ -64,8 +63,6 @@ const run = async () => {
     messages.push(`Coords: \`${pokemon.lat},${pokemon.lng}\``)
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
-    const pokeArtwork = pokeInfo.image.replace(/\./g, '\\.')
-    messages.push(pokeArtwork)
 
     // send it to telegram
     const notifyResp = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
