@@ -4,7 +4,15 @@ const path = require('path')
 
 const app = http.createServer()
 
-const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8'))
+const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8')).map(v => {
+  const slug = v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
+
+  return {
+    ...v,
+    image: `https://img.pokemondb.net/artwork/${slug}.jpg`,
+    infoUrl: `https://pokemondb.net/pokedex/${slug}`,
+  }
+})
 const baseUrl = 'https://sgpokemap.com/query2.php'
 let time = Date.now()
 let since = 0
@@ -44,15 +52,13 @@ const run = async () => {
 
   for await (const pokemon of data.pokemons) {
     const poke = pokemonList.pokemon.filter(v => v.id === pokemon.pokemon_id)[0]
-    const messages = [`*${poke.name}*`]
+    const messages = [`[*${poke.name}*](${poke.infoUrl})`]
     messages.push(`Level: ${pokemon.level} CP: ${pokemon.cp} Shiny: ${pokemon.shiny ? 'yes' : 'no'}`)
     messages.push(`Coords: \`${pokemon.lat},${pokemon.lng}\``)
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
-    const pokeArtwork = `https://img\\.pokemondb\\.net/artwork/${poke.name.toLowerCase().replace(/[^a-z]+/g, '-')}\\.jpg`
+    const pokeArtwork = poke.image.replace(/\./g, '\\.')
     messages.push(pokeArtwork)
-
-    console.log(messages.join("\n"))
 
     // send it to telegram
     const notifyResp = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
