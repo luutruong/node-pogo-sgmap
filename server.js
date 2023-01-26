@@ -4,7 +4,7 @@ const path = require('path')
 
 const app = http.createServer()
 
-const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8')).map(v => {
+const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8')).pokemon.map(v => {
   const slug = v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
 
   return {
@@ -20,7 +20,7 @@ let since = 0
 const botToken = process.env.POGO_TELEGRAM_BOT_TOKEN
 const chatId = process.env.POGO_TELEGRAM_CHAT_ID
 
-const pokemonIds = pokemonList.pokemon.map(v => v.id).join(',')
+const pokemonIds = pokemonList.map(v => v.id).join(',')
 
 const run = async () => {
   const url = `${baseUrl}?mons=${pokemonIds}&minIV=100&time=${time}&since=${since}`
@@ -51,13 +51,13 @@ const run = async () => {
   time = Date.now()
 
   for await (const pokemon of data.pokemons) {
-    const poke = pokemonList.pokemon.filter(v => v.id === pokemon.pokemon_id)[0]
-    const messages = [`[*${poke.name}*](${poke.infoUrl})`]
+    const pokeInfo = pokemonList.filter(v => v.id === pokemon.pokemon_id)[0]
+    const messages = [`[*${pokeInfo.name}*](${pokeInfo.infoUrl})`]
     messages.push(`Level: ${pokemon.level} CP: ${pokemon.cp} Shiny: ${pokemon.shiny ? 'yes' : 'no'}`)
     messages.push(`Coords: \`${pokemon.lat},${pokemon.lng}\``)
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
-    const pokeArtwork = poke.image.replace(/\./g, '\\.')
+    const pokeArtwork = pokeInfo.image.replace(/\./g, '\\.')
     messages.push(pokeArtwork)
 
     // send it to telegram
