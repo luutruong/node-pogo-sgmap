@@ -23,7 +23,7 @@ const pokemonIds = pokemonList.map(v => v.id).join(',')
 const pickIVs = ['15/15/15', '0/15/15']
 
 const run = async () => {
-  const url = `${baseUrl}?mons=${pokemonIds}&minIV=50&time=${time}&since=${since}`
+  const url = `${baseUrl}?mons=${pokemonIds}&minIV=10&time=${time}&since=${since}`
   let resp
 
   try {
@@ -54,12 +54,12 @@ const run = async () => {
     const pokeInfo = pokemonList.filter(v => v.id === pokemon.pokemon_id)[0]
     const iv = `${pokemon.attack}/${pokemon.defence}/${pokemon.stamina}`
     // console.log(pokeInfo.name, iv, pokemon.cp)
-    if (pickIVs.indexOf(iv) === -1) {
+    if (pickIVs.indexOf(iv) === -1 && !pokemon.shiny) {
       continue
     }
 
-    const messages = [`[*${pokeInfo.name}*](${pokeInfo.infoUrl})`]
-    messages.push(`Level: ${pokemon.level} IV: ${iv} CP: ${pokemon.cp} Shiny: ${pokemon.shiny ? 'yes' : 'no'}`)
+    const messages = [`[*${pokeInfo.name}*](${pokeInfo.infoUrl})${pokemon.shiny ? ' ✨' : ''}`]
+    messages.push(`Level: ${pokemon.level} IV: ${iv} CP: ${pokemon.cp}`)
     messages.push(`Coords: \`${pokemon.lat},${pokemon.lng}\``)
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
