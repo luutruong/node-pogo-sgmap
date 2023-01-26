@@ -54,6 +54,7 @@ const run = async () => {
   for await (const pokemon of data.pokemons) {
     const pokeInfo = pokemonList.filter(v => v.id === pokemon.pokemon_id)[0]
     const iv = `${pokemon.attack}/${pokemon.defence}/${pokemon.stamina}`
+    console.log(pokeInfo.name, iv, pokemon.cp)
     if (pickIVs.indexOf(iv) === -1) {
       continue
     }
