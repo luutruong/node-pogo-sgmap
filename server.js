@@ -23,7 +23,7 @@ const pokemonIds = pokemonList.map(v => v.id).join(',')
 const pickIVs = ['15/15/15', '0/15/15']
 
 const run = async () => {
-  const url = `${baseUrl}?mons=${pokemonIds}&minIV=20&time=${time}&since=${since}`
+  const url = `${baseUrl}?mons=${pokemonIds}&minIV=50&time=${time}&since=${since}`
   let resp
 
   try {
@@ -53,7 +53,7 @@ const run = async () => {
   for await (const pokemon of data.pokemons) {
     const pokeInfo = pokemonList.filter(v => v.id === pokemon.pokemon_id)[0]
     const iv = `${pokemon.attack}/${pokemon.defence}/${pokemon.stamina}`
-    console.log(pokeInfo.name, iv, pokemon.cp)
+    // console.log(pokeInfo.name, iv, pokemon.cp)
     if (pickIVs.indexOf(iv) === -1) {
       continue
     }
