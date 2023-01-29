@@ -74,14 +74,17 @@ const run = async () => {
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
     if (Array.isArray(greatLeagueRankings)) {
       const nameNormalized = pokeInfo.name_normalized.replace('-', '_')
+      let rankNum = 'n/a'
       for (let rank = 0; rank < greatLeagueRankings.length; rank++) {
         const rankInfo = greatLeagueRankings[rank]
         if (rankInfo.speciesId === nameNormalized) {
-          messages.push(`Great league rank: \\#${rank + 1}`)
+          rankNum = rank + 1
 
           break
         }
       }
+
+      messages.push(`Great league rank: \\${rankNum}`)
     }
 
     // send it to telegram
