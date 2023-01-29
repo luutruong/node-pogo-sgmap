@@ -4,7 +4,7 @@ const path = require('path')
 
 const app = http.createServer()
 
-const normalizeName = v => v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
+const normalizeName = v => v.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
 
 const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8')).pokemon.map(v => {
   const nameNormalized = normalizeName(v.name)
