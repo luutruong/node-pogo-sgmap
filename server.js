@@ -4,8 +4,10 @@ const path = require('path')
 
 const app = http.createServer()
 
+const normalizeName = v => v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
+
 const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8')).pokemon.map(v => {
-  const nameNormalized = v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
+  const nameNormalized = normalizeName(v.name)
 
   return {
     ...v,
@@ -73,7 +75,11 @@ const run = async () => {
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
     if (Array.isArray(greatLeagueRankings)) {
-      const nameNormalized = pokeInfo.name_normalized.replace('-', '_')
+      let nameNormalized = pokeInfo.name_normalized.replace('-', '_')
+      if (pokeInfo.evolution) {
+        nameNormalized = normalizeName([...pokeInfo.evolution].pop())
+      }
+
       let rankNum = 'n/a'
       for (let rank = 0; rank < greatLeagueRankings.length; rank++) {
         const rankInfo = greatLeagueRankings[rank]
@@ -84,7 +90,7 @@ const run = async () => {
         }
       }
 
-      messages.push(`Great league rank: \\${rankNum}`)
+      messages.push(`Great league rank: \\${rankNum} ${nameNormalized}`)
     }
 
     // send it to telegram
