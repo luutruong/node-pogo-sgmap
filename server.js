@@ -75,10 +75,11 @@ const run = async () => {
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
     if (Array.isArray(greatLeagueRankings)) {
-      let nameNormalized = pokeInfo.name_normalized.replace('-', '_')
-      if (pokeInfo.evolution) {
+      let nameNormalized = pokeInfo.name_normalized
+      if (Array.isArray(pokeInfo.evolution) && pokeInfo.evolution.length > 0) {
         nameNormalized = normalizeName([...pokeInfo.evolution].pop())
       }
+      nameNormalized = nameNormalized.replace('-', '_')
 
       let rankNum = 'n/a'
       for (let rank = 0; rank < greatLeagueRankings.length; rank++) {
@@ -90,7 +91,7 @@ const run = async () => {
         }
       }
 
-      messages.push(`Great league rank: \\${rankNum} ${nameNormalized}`)
+      messages.push(`Great league rank (for pokemon: ${nameNormalized}): \\${rankNum}`)
     }
 
     // send it to telegram
