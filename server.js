@@ -5,11 +5,12 @@ const path = require('path')
 const app = http.createServer()
 
 const pokemonList = JSON.parse(fs.readFileSync(path.join(__dirname, 'pokemondb.json'), 'utf8')).pokemon.map(v => {
-  const slug = v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
+  const nameNormalized = v.name.toLowerCase().replace(' ', '-').replace(/[^a-z\-]+/g, '')
 
   return {
     ...v,
-    infoUrl: `https://pokemondb.net/pokedex/${slug}`,
+    infoUrl: `https://pokemondb.net/pokedex/${nameNormalized}`,
+    name_normalized: nameNormalized,
   }
 })
 const baseUrl = 'https://sgpokemap.com/query2.php'
@@ -21,8 +22,16 @@ const chatId = process.env.POGO_TELEGRAM_CHAT_ID
 
 const pokemonIds = pokemonList.map(v => v.id).join(',')
 const pickIVs = ['15/15/15', '0/15/15']
+const defaultUA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.61'
+
+let greatLeagueRankings = null
 
 const run = async () => {
+  if (greatLeagueRankings === null) {
+    const glResp = await fetch('https://pvpoke.com/data/rankings/all/overall/rankings-1500.json?v=1.29.21.17')
+    greatLeagueRankings = await glResp.json()
+  }
+
   const url = `${baseUrl}?mons=${pokemonIds}&minIV=10&time=${time}&since=${since}`
   let resp
 
@@ -30,7 +39,7 @@ const run = async () => {
     resp = await fetch(url, {
       method: 'GET',
       headers: {
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.61',
+        'user-agent': defaultUA,
         'x-requested-with': 'XMLHttpRequest',
         'referer': 'https://sgpokemap.com/'
       },
@@ -63,6 +72,17 @@ const run = async () => {
     messages.push(`Coords: \`${pokemon.lat},${pokemon.lng}\``)
     const despawn = new Date(pokemon.despawn * 1000)
     messages.push(`Disappear at: ${despawn.toLocaleTimeString()}`)
+    if (Array.isArray(greatLeagueRankings)) {
+      const nameNormalized = pokeInfo.name_normalized.replace('-', '_')
+      for (let rank = 0; rank < greatLeagueRankings.length; rank++) {
+        const rankInfo = greatLeagueRankings[rank]
+        if (rankInfo.speciesId === nameNormalized) {
+          messages.push(`Great league rank: \\#${rank + 1}`)
+
+          break
+        }
+      }
+    }
 
     // send it to telegram
     const notifyResp = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
