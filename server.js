@@ -91,7 +91,7 @@ const run = async () => {
         }
       }
 
-      messages.push(`Great league rank (for pokemon: ${nameNormalized}): \\${rankNum}`)
+      messages.push(`Great league rank: \\${rankNum}`)
     }
 
     // send it to telegram
