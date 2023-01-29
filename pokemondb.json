@@ -5407,7 +5407,11 @@
                 "speed": 40,
                 "total": 250
             },
-            "evolution": [],
+            "evolution": [
+                "Azurill",
+                "Marill",
+                "Azumarill"
+            ],
             "description": "Description not available yet",
             "gen": 2
         },
@@ -8515,7 +8519,11 @@
                 "speed": 20,
                 "total": 190
             },
-            "evolution": [],
+            "evolution": [
+                "Azurill",
+                "Marill",
+                "Azumarill"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8680,7 +8688,11 @@
                 "speed": 30,
                 "total": 330
             },
-            "evolution": [],
+            "evolution": [
+                "Aron",
+                "Lairon",
+                "Aggron"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8708,7 +8720,11 @@
                 "speed": 40,
                 "total": 430
             },
-            "evolution": [],
+            "evolution": [
+                "Aron",
+                "Lairon",
+                "Aggron"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8736,7 +8752,11 @@
                 "speed": 50,
                 "total": 630
             },
-            "evolution": [],
+            "evolution": [
+                "Aron",
+                "Lairon",
+                "Aggron"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8763,7 +8783,10 @@
                 "speed": 60,
                 "total": 280
             },
-            "evolution": [],
+            "evolution": [
+                "Meditite",
+                "Medicham"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8790,7 +8813,10 @@
                 "speed": 100,
                 "total": 510
             },
-            "evolution": [],
+            "evolution": [
+                "Meditite",
+                "Medicham"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8817,7 +8843,10 @@
                 "speed": 65,
                 "total": 295
             },
-            "evolution": [],
+            "evolution": [
+                "Electrike",
+                "Manectric"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -8844,7 +8873,10 @@
                 "speed": 135,
                 "total": 575
             },
-            "evolution": [],
+            "evolution": [
+                "Electrike",
+                "Manectric"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9113,7 +9145,10 @@
                 "speed": 60,
                 "total": 400
             },
-            "evolution": [],
+            "evolution": [
+                "Wailmer",
+                "Wailord"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9140,7 +9175,10 @@
                 "speed": 60,
                 "total": 500
             },
-            "evolution": [],
+            "evolution": [
+                "Wailmer",
+                "Wailord"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9168,7 +9206,10 @@
                 "speed": 35,
                 "total": 305
             },
-            "evolution": [],
+            "evolution": [
+                "Numel",
+                "Camerupt"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9196,7 +9237,10 @@
                 "speed": 20,
                 "total": 560
             },
-            "evolution": [],
+            "evolution": [
+                "Numel",
+                "Camerupt"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9409,7 +9453,10 @@
                 "speed": 35,
                 "total": 335
             },
-            "evolution": [],
+            "evolution": [
+                "Cacnea",
+                "Cacturne"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9436,7 +9483,10 @@
                 "speed": 55,
                 "total": 475
             },
-            "evolution": [],
+            "evolution": [
+                "Cacnea",
+                "Cacturne"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9463,7 +9513,10 @@
                 "speed": 50,
                 "total": 310
             },
-            "evolution": [],
+            "evolution": [
+                "Swablu",
+                "Altaria"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9490,7 +9543,10 @@
                 "speed": 80,
                 "total": 590
             },
-            "evolution": [],
+            "evolution": [
+                "Swablu",
+                "Altaria"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9677,7 +9733,10 @@
                 "speed": 35,
                 "total": 308
             },
-            "evolution": [],
+            "evolution": [
+                "Corphish",
+                "Crawdaunt"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9705,7 +9764,10 @@
                 "speed": 55,
                 "total": 468
             },
-            "evolution": [],
+            "evolution": [
+                "Corphish",
+                "Crawdaunt"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9731,7 +9793,10 @@
                 "speed": 55,
                 "total": 300
             },
-            "evolution": [],
+            "evolution": [
+                "Baltoy",
+                "Claydol"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9757,7 +9822,10 @@
                 "speed": 75,
                 "total": 500
             },
-            "evolution": [],
+            "evolution": [
+                "Baltoy",
+                "Claydol"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9784,7 +9852,10 @@
                 "speed": 23,
                 "total": 355
             },
-            "evolution": [],
+            "evolution": [
+                "Lileep",
+                "Cradily"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9811,7 +9882,10 @@
                 "speed": 43,
                 "total": 495
             },
-            "evolution": [],
+            "evolution": [
+                "Lileep",
+                "Cradily"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9838,7 +9912,10 @@
                 "speed": 75,
                 "total": 355
             },
-            "evolution": [],
+            "evolution": [
+                "Anorith",
+                "Armaldo"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9865,7 +9942,10 @@
                 "speed": 45,
                 "total": 495
             },
-            "evolution": [],
+            "evolution": [
+                "Anorith",
+                "Armaldo"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9892,7 +9972,10 @@
                 "speed": 80,
                 "total": 200
             },
-            "evolution": [],
+            "evolution": [
+                "Feebas",
+                "Milotic"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9919,7 +10002,10 @@
                 "speed": 81,
                 "total": 540
             },
-            "evolution": [],
+            "evolution": [
+                "Feebas",
+                "Milotic"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -9997,7 +10083,10 @@
                 "speed": 45,
                 "total": 295
             },
-            "evolution": [],
+            "evolution": [
+                "Shuppet",
+                "Banette"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -10024,7 +10113,10 @@
                 "speed": 75,
                 "total": 555
             },
-            "evolution": [],
+            "evolution": [
+                "Shuppet",
+                "Banette"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -10050,7 +10142,11 @@
                 "speed": 25,
                 "total": 295
             },
-            "evolution": [],
+            "evolution": [
+                "Duskull",
+                "Dusclops",
+                "Dusknoir"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -10076,7 +10172,11 @@
                 "speed": 25,
                 "total": 455
             },
-            "evolution": [],
+            "evolution": [
+                "Duskull",
+                "Dusclops",
+                "Dusknoir"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -10129,7 +10229,10 @@
                 "speed": 65,
                 "total": 455
             },
-            "evolution": [],
+            "evolution": [
+                "Chingling",
+                "Chimecho"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -10182,7 +10285,10 @@
                 "speed": 23,
                 "total": 260
             },
-            "evolution": [],
+            "evolution": [
+                "Wynaut",
+                "Wobbuffet"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
@@ -10209,7 +10315,10 @@
                 "speed": 50,
                 "total": 300
             },
-            "evolution": [],
+            "evolution": [
+                "Snorunt",
+                "Glalie"
+            ],
             "description": "Description not available yet",
             "gen": 3
         },
